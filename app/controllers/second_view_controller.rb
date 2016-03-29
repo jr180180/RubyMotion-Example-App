@@ -12,8 +12,14 @@ class SecondViewController < UIViewController
 	def on_action
 		if view.switch.on? 
 			puts "You've switched it ON."
+			@text_label = UILabel.new
+			@text_label.text = 'This is hidden no more!'
+			@text_label.frame = [[20,300],[300, 30]]
+			@text_label.textColor = UIColor.blackColor
+			view.addSubview(@text_label)
 		else
 			puts "You've switch it OFF."
+			@text_label.removeFromSuperview
 		end
 	end
 end
