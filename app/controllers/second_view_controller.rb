@@ -7,6 +7,7 @@ class SecondViewController < UIViewController
 		self.view = SecondView.new
 		# - (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
 		view.switch.addTarget(self, action: :on_action, forControlEvents: UIControlEventValueChanged)
+		view.stepper.addTarget(self, action: :stepper_value, forControlEvents: UIControlEventValueChanged)
 	end
 
 	def on_action
@@ -22,4 +23,10 @@ class SecondViewController < UIViewController
 			@text_label.removeFromSuperview
 		end
 	end
+
+	def stepper_value
+		puts view.stepper.value
+		view.stepper_label.text = "#{view.stepper.value}"
+	end
+
 end
