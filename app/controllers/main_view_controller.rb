@@ -7,6 +7,7 @@ class MainViewController < UIViewController
 		self.view = MainView.new
 		# - (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
 		view.button.addTarget(self, action: :alert_controller, forControlEvents: UIControlEventTouchUpInside)
+		view.todo_button.addTarget(self, action: :second_controller, forControlEvents: UIControlEventTouchUpInside)
 	end
 
 	def alert_controller
@@ -35,4 +36,8 @@ class MainViewController < UIViewController
 		puts 'You pressed okay!'
 	end
 
+	def second_controller
+		# - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+		navigationController.pushViewController(SecondViewController.new, animated: true)
+	end
 end

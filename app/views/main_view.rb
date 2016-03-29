@@ -1,5 +1,5 @@
 class MainView < UIView
-	attr_accessor :button
+	attr_accessor :button, :todo_button
 	def init
 		super
 
@@ -14,6 +14,13 @@ class MainView < UIView
 		@button.setTitleColor(UIColor.redColor, forState: UIControlStateNormal)
 		@button.frame = [[20, 200], [200, 30]]
 		addSubview(@button)
+
+		# + (instancetype)buttonWithType:(UIButtonType)buttonType
+		@todo_button = UIButton.buttonWithType(UIButtonTypeDetailDisclosure)
+		@todo_button.setTitle('Add Todo', forState: UIControlStateNormal)
+		@todo_button.setTitleColor(UIColor.blueColor, forState: UIControlStateNormal)
+		@todo_button.frame = [[20, 300], [300, 30]]
+		addSubview(@todo_button)
 
 		label = UILabel.new
 		label.text = 'Text Label'
