@@ -1,6 +1,6 @@
 class MainViewController < UIViewController
 	def viewDidLoad
-		self.title = 'Main Controller'
+		self.title = 'Main'
 	end
 
 	def loadView
