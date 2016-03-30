@@ -4,7 +4,7 @@ class AppDelegate
     # rootViewController.title = 'MyApp'
     # rootViewController.view.backgroundColor = UIColor.whiteColor
 
-    navigationController = UINavigationController.alloc.initWithRootViewController(MainViewController.new)
+    navigationController = MainTabBarController.new
 
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
     @window.rootViewController = navigationController

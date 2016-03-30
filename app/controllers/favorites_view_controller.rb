@@ -2,7 +2,7 @@ class FavoritesViewController < UIViewController
   def init
     super
 
-    self.tabBarItem = UITabBarItem.alloc.initWithTabBarSystemItem(UITabBarSystemItemFavorites, tag: 2)
+    self.tabBarItem = UITabBarItem.alloc.initWithTabBarSystemItem(UITabBarSystemItemFavorites, tag: 3)
 
     self
   end

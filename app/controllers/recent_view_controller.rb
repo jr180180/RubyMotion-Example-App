@@ -2,7 +2,7 @@ class RecentViewController < UIViewController
   def init
     super
 
-    self.tabBarItem = UITabBarItem.alloc.initWithTabBarSystemItem(UITabBarSystemItemRecents, tag: 1)
+    self.tabBarItem = UITabBarItem.alloc.initWithTabBarSystemItem(UITabBarSystemItemRecents, tag: 2)
 
     self
   end

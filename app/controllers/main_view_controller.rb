@@ -3,7 +3,8 @@ class MainViewController < UIViewController
   def init
     super
 
-    self.tabBarItem = UITabBarItem.alloc.initWithTabBarSystemItem(UITabBarSystemItemRecents, tag: 2)
+    # - (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image tag:(NSInteger)tag
+    self.tabBarItem = UITabBarItem.alloc.initWithTitle('Second', image: UIImage.imageNamed('second_view_tab_item'), tag: 1)
 
     self
   end
@@ -16,7 +17,13 @@ class MainViewController < UIViewController
 		self.view = MainView.new
 		# - (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
 		view.button.addTarget(self, action: :alert_controller, forControlEvents: UIControlEventTouchUpInside)
-		view.todo_button.addTarget(self, action: :second_controller, forControlEvents: UIControlEventTouchUpInside)
+		view.todo_button.addTarget(self, action: :add_todo, forControlEvents: UIControlEventTouchUpInside)
+
+    # - (instancetype)initWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style target:(id)target action:(SEL)action
+    right_button = UIBarButtonItem.alloc.initWithTitle('Add', style: UIBarButtonItemStylePlain, target: self, action: :add_todo)
+    left_button = UIBarButtonItem.alloc.initWithTitle('Delete', style: UIBarButtonItemStylePlain, target: self, action: nil)
+    self.navigationItem.setRightBarButtonItem(right_button, animated: true)
+    self.navigationItem.setLeftBarButtonItem(left_button, animated: true)
 	end
 
 	def alert_controller
@@ -45,9 +52,9 @@ class MainViewController < UIViewController
 		puts 'You pressed okay!'
 	end
 
-	def second_controller
+	def add_todo
 		# - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
-		navigationController.pushViewController(MainTabBarController.new, animated: true)
+		navigationController.pushViewController(TodoViewController.new, animated: true)
   end
 
 end
