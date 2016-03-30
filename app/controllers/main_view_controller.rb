@@ -1,4 +1,13 @@
 class MainViewController < UIViewController
+
+  def init
+    super
+
+    self.tabBarItem = UITabBarItem.alloc.initWithTabBarSystemItem(UITabBarSystemItemRecents, tag: 2)
+
+    self
+  end
+
 	def viewDidLoad
 		self.title = 'Main'
 	end
@@ -38,6 +47,7 @@ class MainViewController < UIViewController
 
 	def second_controller
 		# - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
-		navigationController.pushViewController(SecondViewController.new, animated: true)
-	end
+		navigationController.pushViewController(MainTabBarController.new, animated: true)
+  end
+
 end
