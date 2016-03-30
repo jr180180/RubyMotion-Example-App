@@ -4,12 +4,9 @@ class MainTabBarController < UITabBarController
     super
 
     self.viewControllers = [
-        SecondViewController.new,
-        MainViewController.new,
-        SecondViewController.new,
-        MainViewController.new,
-        SecondViewController.new,
-        MainViewController.new
+        FavoritesViewController.new,
+        RecentViewController.new,
+        SecondViewController.new
     ]
 
     self
