@@ -1,5 +1,5 @@
 class MainView < UIView
-	attr_accessor :button, :todo_button
+	attr_accessor :button, :todo_button, :top_guide, :label, :field
 	def init
 		super
 
@@ -22,19 +22,54 @@ class MainView < UIView
 		@todo_button.frame = [[20, 300], [300, 30]]
 		addSubview(@todo_button)
 
-		label = UILabel.new
-		label.text = 'Text Label'
-		label.textColor = UIColor.blueColor
-		label.frame = [[20, 150], [200, 30]]
-		addSubview(label)
+		@label = UILabel.new
+		@label.text = 'Text Label'
+		@label.textColor = UIColor.blueColor
+		addSubview(@label)
 
-		field = UITextField.new
-		field.text = 'This text'
-		field.placeholder = 'Text inside the field'
-		field.backgroundColor = UIColor.yellowColor
-		field.frame = [[20, 250], [200, 30]]
-		addSubview(field)
+		@field = UITextField.new
+		@field.text = 'This text'
+		@field.placeholder = 'Text inside the field'
+		@field.backgroundColor = UIColor.yellowColor
+		addSubview(@field)
 
-	end
+		self
+  end
+
+  def view_constraints
+    @label.translatesAutoresizingMaskIntoConstraints = false
+    @field.translatesAutoresizingMaskIntoConstraints = false
+    @button.translatesAutoresizingMaskIntoConstraints = false
+    @todo_button.translatesAutoresizingMaskIntoConstraints = false
+
+    NSLayoutConstraint.activateConstraints(
+        NSLayoutConstraint.constraintsWithVisualFormat(
+            "|-50-[label][field(==label)]-50-|",
+            options:NSLayoutFormatAlignAllBaseline ,
+            metrics: nil,
+            views: {"label" => @label, "field" => @field}))
+
+    NSLayoutConstraint.activateConstraints(
+        NSLayoutConstraint.constraintsWithVisualFormat(
+            "|-50-[button]-50-|",
+            options:NSLayoutFormatDirectionLeadingToTrailing ,
+            metrics: nil,
+            views: {"button" => @button}))
+
+    NSLayoutConstraint.activateConstraints(
+        NSLayoutConstraint.constraintsWithVisualFormat(
+            "|-50-[todo_button]-50-|",
+            options:NSLayoutFormatDirectionLeadingToTrailing ,
+            metrics: nil,
+            views: {"todo_button" => @todo_button}))
+
+    NSLayoutConstraint.activateConstraints(
+        NSLayoutConstraint.constraintsWithVisualFormat(
+            "V:[top_guide]-[label]-20-[button]-20-[todo_button]",
+            options:NSLayoutFormatDirectionLeadingToTrailing ,
+            metrics: nil,
+            views: {"label" => @label, "button" => @button, "todo_button" => @todo_button, "top_guide" => @top_guide}))
+
+  end
 
 end
