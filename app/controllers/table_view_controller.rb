@@ -8,6 +8,9 @@ class TableViewController < UITableViewController
   def loadView
     self.title = 'Table'
     self.tableView = UITableView.new
+  #   - (void)registerClass:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier
+    tableView.registerClass(UITableViewCell, forCellReuseIdentifier: 'CELL')
+
   end
 
   # - (NSInteger)numberOfRowsInSection:(NSInteger)section
@@ -17,7 +20,8 @@ class TableViewController < UITableViewController
 
   # - (__kindofUITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath
   def tableView(tableView, cellForRowAtIndexPath: indexPath)
-    cell = UITableViewCell.new
+    # - (__kindofUITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath
+    cell = tableView.dequeueReusableCellWithIdentifier('CELL', forIndexPath: indexPath)
     cell.textLabel.text = Titles.all[indexPath.row][0]
     cell.imageView.image = UIImage.imageNamed(Titles.all[indexPath.row][1])
 
