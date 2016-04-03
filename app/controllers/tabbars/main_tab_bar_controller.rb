@@ -8,7 +8,8 @@ class MainTabBarController < UITabBarController
         UINavigationController.alloc.initWithRootViewController(FavoritesViewController.new),
         UINavigationController.alloc.initWithRootViewController(RecentViewController.new),
         UINavigationController.alloc.initWithRootViewController(SecondViewController.new),
-        UINavigationController.alloc.initWithRootViewController(TableViewController.new)
+        UINavigationController.alloc.initWithRootViewController(TableViewController.new),
+        UINavigationController.alloc.initWithRootViewController(MapViewController.new)
     ]
 
     self
