@@ -10,7 +10,6 @@ class TableViewController < UITableViewController
     self.tableView = UITableView.new
   #   - (void)registerClass:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier
     tableView.registerClass(UITableViewCell, forCellReuseIdentifier: 'CELL')
-
   end
 
   # - (NSInteger)numberOfRowsInSection:(NSInteger)section
@@ -24,7 +23,6 @@ class TableViewController < UITableViewController
     cell = tableView.dequeueReusableCellWithIdentifier('CELL', forIndexPath: indexPath)
     cell.textLabel.text = Titles.all[indexPath.row][0]
     cell.imageView.image = UIImage.imageNamed(Titles.all[indexPath.row][1])
-
     cell
   end
 end

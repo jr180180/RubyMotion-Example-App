@@ -1,10 +1,8 @@
 class SecondViewController < UIViewController
   def init
     super
-
     # - (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image tag:(NSInteger)tag
     self.tabBarItem = UITabBarItem.alloc.initWithTitle('Second', image: UIImage.imageNamed('second_view_tab_item'), tag: 4)
-
     self
   end
 	def viewDidLoad
