@@ -42,4 +42,11 @@ class MapViewController < UIViewController
     # - (void)setRegion:(MKCoordinateRegion)region animated:(BOOL)animated
     self.view.setRegion(region, animated: true)
   end
+
+  # - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
+  def locationManager(locationManager, didUpdateLocations: locations)
+    # puts "Location coordinate = #{locations}"
+    puts "Latitude = #{locations.first.coordinate.latitude}"
+    puts "Longitude = #{locations.first.coordinate.longitude}"
+  end
 end
