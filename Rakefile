@@ -13,4 +13,6 @@ Motion::Project::App.setup do |app|
   app.name = 'MyApp'
   app.deployment_target = '9.3'
   app.frameworks += ['MapKit','CoreLocation']
+  app.info_plist['NSLocationAlwaysUsageDescription'] = 'Example app needs your location just because.'
+  app.info_plist['NSLocationWhenInUseUsageDescription'] = 'Example app needs your location just because.'
 end

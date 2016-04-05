@@ -9,6 +9,18 @@ class MapViewController < UIViewController
     self.title = 'Map'
     self.view = MKMapView.new
     center_austin
+    get_location
+  end
+
+  def get_location
+    if CLLocationManager.locationServicesEnabled
+      @location_manager = CLLocationManager.new
+      @location_manager.delegate = self
+      @location_manager.requestAlwaysAuthorization
+      @location_manager.desiredAccuracy = KCLLocationAccuracyNearestTenMeters
+      @location_manager.distanceFilter = 25.0
+      @location_manager.startUpdatingLocation
+    end
   end
 
   def center_austin
