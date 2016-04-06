@@ -1,8 +1,6 @@
 class MainTabBarController < UITabBarController
-
   def init
     super
-
     self.viewControllers = [
         UINavigationController.alloc.initWithRootViewController(MainViewController.new),
         UINavigationController.alloc.initWithRootViewController(FavoritesViewController.new),
@@ -11,8 +9,6 @@ class MainTabBarController < UITabBarController
         UINavigationController.alloc.initWithRootViewController(TableViewController.new),
         UINavigationController.alloc.initWithRootViewController(MapViewController.new)
     ]
-
     self
   end
-
 end
