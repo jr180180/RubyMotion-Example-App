@@ -1,4 +1,5 @@
 class MapViewController < UIViewController
+  attr_accessor :region, :span, :pin
   def init
     super
     self.tabBarItem = UITabBarItem.alloc.initWithTitle('Map', image: UIImage.imageNamed('second_view_tab_item'), tag: 6)
@@ -9,6 +10,7 @@ class MapViewController < UIViewController
     self.title = 'Map'
     self.view = MKMapView.new
     center_austin
+    @pin = MKPointAnnotation.new
     get_location
   end
 
@@ -30,23 +32,30 @@ class MapViewController < UIViewController
     coordinates.longitude = -97.7427778
 
     # typedef struct { CLLocationDegrees latitudeDelta; CLLocationDegrees longitudeDelta; } MKCoordinateSpan;
-    span = MKCoordinateSpan.new
-    span.latitudeDelta = 0.1
-    span.longitudeDelta = 0.1
+    @span = MKCoordinateSpan.new
+    @span.latitudeDelta = 0.01
+    @span.longitudeDelta = 0.01
 
     # typedef struct { CLLocationCoordinate2D center; MKCoordinateSpan span; } MKCoordinateRegion;
-    region = MKCoordinateRegion.new
-    region.center = coordinates
-    region.span = span
+    @region = MKCoordinateRegion.new
+    @region.center = coordinates
+    @region.span = @span
 
     # - (void)setRegion:(MKCoordinateRegion)region animated:(BOOL)animated
-    self.view.setRegion(region, animated: true)
+    self.view.setRegion(@region, animated: true)
   end
 
   # - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
   def locationManager(locationManager, didUpdateLocations: locations)
     # puts "Location coordinate = #{locations}"
-    puts "Latitude = #{locations.first.coordinate.latitude}"
-    puts "Longitude = #{locations.first.coordinate.longitude}"
+    current_location = locations.first.coordinate
+    puts "Latitude = #{current_location.latitude}"
+    puts "Longitude = #{current_location.longitude}"
+    @pin.coordinate = current_location
+    @region.center = current_location
+    @region.span = @span
+    # - (void)showAnnotations:(NSArray<id<MKAnnotation>> *)annotations animated:(BOOL)animated
+    view.showAnnotations([@pin], animated: true)
+    view.setRegion(@region, animated: true)
   end
 end
