@@ -52,6 +52,8 @@ class MapViewController < UIViewController
     puts "Latitude = #{current_location.latitude}"
     puts "Longitude = #{current_location.longitude}"
     @pin.coordinate = current_location
+    @pin.title = 'Current Location'
+    @pin.subtitle = 'This is where we are.'
     @region.center = current_location
     @region.span = @span
     # - (void)showAnnotations:(NSArray<id<MKAnnotation>> *)annotations animated:(BOOL)animated
