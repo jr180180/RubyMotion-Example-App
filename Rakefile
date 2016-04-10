@@ -12,7 +12,7 @@ Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'MyApp'
   app.deployment_target = '9.3'
-  app.frameworks += ['MapKit','CoreLocation']
+  app.frameworks += ['MapKit','CoreLocation','ContactsUI']
   app.info_plist['NSLocationAlwaysUsageDescription'] = 'Example app needs your location just because.'
   app.info_plist['NSLocationWhenInUseUsageDescription'] = 'Example app needs your location just because.'
 end
