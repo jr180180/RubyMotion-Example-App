@@ -20,6 +20,7 @@ class ContactViewController < UIViewController
   def show_contacts
     # Contact controller code
     contacts_controller = CNContactPickerViewController.new
-
+    contacts_controller.delegate = self
+    self.presentViewController(contacts_controller, animated: true, completion: nil)
   end
 end
