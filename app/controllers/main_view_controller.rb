@@ -25,6 +25,13 @@ class MainViewController < UIViewController
     left_button = UIBarButtonItem.alloc.initWithTitle('Delete', style: UIBarButtonItemStylePlain, target: self, action: nil)
     self.navigationItem.setRightBarButtonItem(right_button, animated: true)
     self.navigationItem.setLeftBarButtonItem(left_button, animated: true)
+
+		manager = AFHTTPSessionManager.new
+		# - (nullable NSURLSessionDataTask *)GET:(NSString *)URLString parameters:(nullable id)parameters progress:(nullable void ( ^ ) ( NSProgress *downloadProgress ))downloadProgress success:(nullable void ( ^ ) ( NSURLSessionDataTask *task , id _Nullable responseObject ))success failure:(nullable void ( ^ ) ( NSURLSessionDataTask *_Nullable task , NSError *error ))failure
+		manager.GET('https://qrng.anu.edu.au/API/jsonI.php?length=1&type=uint8', parameters: nil, progress: nil,
+								success: lambda {|task, response| p response},
+								failure: lambda {|task, error| p error.localizedDescription}
+		)
 	end
 
 	def alert_controller
