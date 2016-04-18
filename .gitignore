@@ -16,3 +16,5 @@ nbproject
 .idea
 .dat*.*
 Gemfile.lock
+vendor/Pods/build-iPhoneSimulator
+vendor/Pods/.build
