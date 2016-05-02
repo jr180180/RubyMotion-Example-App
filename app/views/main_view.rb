@@ -40,16 +40,56 @@ class MainView < UIView
     # drawing_example
     # circle_example
 
-    line(30,400,60,350)
-    line(60,350,90,300)
-    line(90,300,120,400)
-    line(120,400,150,375)
+    # line(30,400,60,350)
+    # line(60,350,90,300)
+    # line(90,300,120,400)
+    # line(120,400,150,375)
+    #
+    # circles(30,400)
+    # circles(60,350)
+    # circles(90,300)
+    # circles(120,400)
+    # circles(150,375)
 
-    circles(30,400)
-    circles(60,350)
-    circles(90,300)
-    circles(120,400)
-    circles(150,375)
+    # Color Declarations
+    color = UIColor.colorWithRed(0.711, green: 0.162, blue: 0.162, alpha: 1)
+
+    # Rectangle Drawing
+    rectanglePath = UIBezierPath.bezierPathWithRoundedRect(CGRectMake(95, 288, 206, 70), cornerRadius: 10)
+    color.setFill
+    rectanglePath.fill
+
+    # General Declarations
+    context = UIGraphicsGetCurrentContext()
+
+    # Text Drawing
+    textRect = CGRectMake(90, 382, 203, 71)
+    textContent = "Hello, World!"
+    textStyle = NSMutableParagraphStyle.new
+    textStyle.alignment = NSTextAlignmentCenter
+
+    textFontAttributes = {
+        NSFontAttributeName => UIFont.boldSystemFontOfSize(30),
+        NSForegroundColorAttributeName => UIColor.blueColor,
+        NSParagraphStyleAttributeName => textStyle
+    }
+
+    textTextHeight = textContent.boundingRectWithSize(
+        CGSizeMake(textRect.size.width, 50),
+        options: NSStringDrawingUsesLineFragmentOrigin,
+        attributes: textFontAttributes,
+        context: nil
+    ).size.height
+
+    CGContextSaveGState(context)
+    CGContextClipToRect(context, textRect)
+    textContent.drawInRect(
+        CGRectMake(CGRectGetMinX(textRect),
+                   CGRectGetMinY(textRect) + (CGRectGetHeight(textRect) - textTextHeight) / 2,
+                   CGRectGetWidth(textRect), textTextHeight),
+        withAttributes: textFontAttributes)
+    CGContextRestoreGState(context)
+
   end
 
   def view_constraints
